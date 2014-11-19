@@ -1,0 +1,27 @@
+.logo {
+    vertical-align: middle;
+    height: 30px;
+}
+
+h1 {
+    color: red !important;
+}
+
+table td.wide {
+    width: 160px;
+}
+
+table td.narrow {
+    width: 120px;
+}
+
+table input {
+    width: 40px;
+}
+table select {
+    width: 90px;
+}
+
+table #search {
+    vertical-align: top !important;
+}
