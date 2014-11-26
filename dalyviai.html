@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Tūsas 2015</title>
+    <title>Vakarėlis 2015</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -50,53 +50,123 @@
         <div class="span3">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
+              <li class="nav-header">Meniu</li>
               <li><a href="index.html">Mano vakarėlis</a></li>
               <li><a href="kontaktai.html">Kontaktai</a></li>
               <li class="active"><a href="dalyviai.html">Dalyviai</a></li>
-              <li><a href="registracija.html">Registracija</a></li>
             </ul>
           </div>
         </div>
         <div class="span9">
-          <div class="hero-unit text-center">
-            <h1>Dalyviai</h1>
+        <div class="hero-unit text-center">
+            <h1>Registracijos forma</h1>
             <p>
-              <table id="atendies" data-url="database-handler.php">
-                <thead>
-                <tr>
-                  <th>Vardas</th>
-                  <th>Pavardė</th>
-                  <th>Tel. Nr.</th>
-                  <th>Amžius</th>
-                  <th>Dalyvaus</th>
-                  <th></th>
-                </tr>
-
+              Registruokis ir nurodyk ar dalyvausi!
+            </p>
+            <div class="container-fluid">
+              <div class="row-fluid">
+                <div class="span3">
+                </div>
+                <div class="span6 text-left" id="notification-container">
+                  <small></small>
+                </div>
+              </div>
+              <form action="/database-handler.php" method="post" id="participation-form">
+                <div class="row-fluid">
+                  <div class="span3 text-right">
+                    <label for="name">Vardas</label>
+                  </div>
+                  <div class="span3 text-left">
+                    <input id="name" name="name" placeholder="Jonas" type="text" required>
+                  </div>
+                  <div class="span3 text-right">
+                    <label for="surname">Pavardė</label>
+                  </div>
+                  <div class="span3 text-left">
+                    <input id="surname" name="surname" placeholder="Petraitis" type="text" required>
+                  </div>
+                </div>
+                <div class="row-fluid">
+                </div>
+                <div class="row-fluid">
+                  <div class="span3 text-right">
+                    <label for="phone">Telefono numeris</label>
+                  </div>
+                  <div class="span3 text-left">
+                    <input id="phone" name="phone" placeholder="860060000" type="tel" pattern="(\+370|8|00370)[0-9]{8}" required>
+                  </div>
+                  <div class="span3 text-right">
+                    <label for="age">Amžius</label>
+                  </div>
+                  <div class="span3 text-left">
+                    <input id="age" name="age" placeholder="18" type="number" min="16" required>
+                  </div>
+                </div>
+                <div class="row-fluid">
+                </div>
+                <div class="row-fluid">
+                  <div class="span3 text-right">
+                    <label for="attending">Ar dalyvausi?</label>
+                  </div>
+                  <div class="span3 text-left">
+                    <select id="attending" name="attending" required>
+                      <option value="" disabled selected>Pasirink</option>
+                      <option value="y">Paliubomu</option>
+                      <option value="n">Niet</option>
+                      <option value="m">Niznaju</option>
+                    </select>
+                  </div>
+                  <div class="span3 text-right">
+                  </div>
+                  <div class="span3 text-left">
+                    <input type="submit" class="btn" value="Saugoti">
+                  </div>
+                </div>
+                <div class="row-fluid">
+                </div>
+              </form>
+            </div>
+            <h3>Dalyviai</h3>
+            <p>
+              <form action="/database-handler.php" method="get" id="filter-form">
+                <table id="atendies" data-url="database-handler.php">
+                  <thead>
                   <tr>
-                    <td class="wide"></td>
-                    <td class="wide"></td>
-                    <td class="wide"></td>
-                    <td class="narrow">
-                      <input type="number" name="age-from" id="age-from" placeholder="Nuo" min="16" max="99">
-                      <input type="number" name="age-to" id="age-to" placeholder="Iki" min="16" max="99">
-                    </td>
-                    <td class="narrow">
-                      <select id="attending" name="attending" required>
-                        <option value="%">Visi</option>
-                        <option value="y">Taip</option>
-                        <option value="n">Ne</option>
-                        <option value="m">Gal</option>
-                      </select>
-                    </td>
-                    <td class="narrow">
-                      <a id="search" class="btn" href="javascript:filter()">Filtruoti</button>
-                    </td>
+                    <th>Vardas</th>
+                    <th>Pavardė</th>
+                    <th>Tel. Nr.</th>
+                    <th>Amžius</th>
+                    <th>Dalyvaus</th>
+                    <th></th>
                   </tr>
-                </thead>
-                <tbody>
-                </tbody>
-              </table>
+
+                    <tr>
+                      <td class="wide"></td>
+                      <td class="wide"></td>
+                      <td class="wide"></td>
+                      <td class="narrow">
+                        <input type="number" name="age-from" id="age-from" placeholder="Nuo" min="16" max="99">
+                        <input type="number" name="age-to" id="age-to" placeholder="Iki" min="16" max="99">
+                      </td>
+                      <td class="narrow">
+                        <select id="attending" name="attending" required>
+                          <option value="%">Visi</option>
+                          <option value="y">Taip</option>
+                          <option value="n">Ne</option>
+                          <option value="m">Gal</option>
+                        </select>
+                      </td>
+                      <td class="narrow">
+                        <input type="submit" value="Filtruoti" class="btn">
+                        <input type="hidden" value="3" name="limit">
+                      </td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+                <div id="paging"></div>
+              </form>
             </p>
           </div>
         </div>
@@ -111,7 +181,7 @@
     </div>
 
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="js/jquery-1.11.0.min.js"></script>
     <script src="js/bootstrap-transition.js"></script>
     <script src="js/bootstrap-alert.js"></script>
     <script src="js/bootstrap-modal.js"></script>

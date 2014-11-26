@@ -25,3 +25,10 @@ table select {
 table #search {
     vertical-align: top !important;
 }
+
+#paging span, #paging a {
+    padding: 0.5em;
+}
+#paging a.active {
+    text-decoration: underline;
+}
